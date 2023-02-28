@@ -85,10 +85,10 @@ fun MainScreen(
                 startDestination = Screen.Chats.route,
                 Modifier.padding(innerPadding)
             ) {
-                composable(Screen.Chats.route) { Chats(navController) }
-                composable(Screen.Calls.route) { Calls(navController) }
-                composable(Screen.People.route) { People(navController) }
-                composable(Screen.Stories.route) { Stories(navController) }
+                composable(Screen.Chats.route) { ChatScreen(navController) }
+                composable(Screen.Calls.route) { CallsScreen(navController) }
+                composable(Screen.People.route) { PeopleScreen(navController) }
+                composable(Screen.Stories.route) { StoriesScreen(navController) }
             }
         }
     )
@@ -99,25 +99,20 @@ val bottomNavItems = listOf(
     Screen.Chats,
     Screen.Calls,
     Screen.People,
-    Screen.Stories
+    Screen.Stories,
 )
 
 @Composable
-fun Chats(navController: NavController) {
-    Text(text = "CHATS!")
-}
-
-@Composable
-fun Calls(navController: NavController) {
+fun CallsScreen(navController: NavController) {
     Text(text = "CALLS!")
 }
 
 @Composable
-fun People(navController: NavController) {
+fun PeopleScreen(navController: NavController) {
     Text(text = "PEOPLE!")
 }
 
 @Composable
-fun Stories(navController: NavController) {
+fun StoriesScreen(navController: NavController) {
     Text(text = "STORIES!")
 }
