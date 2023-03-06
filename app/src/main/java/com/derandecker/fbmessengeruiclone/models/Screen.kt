@@ -1,4 +1,4 @@
-package com.derandecker.fbmessengeruiclone.ui
+package com.derandecker.fbmessengeruiclone.models
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
