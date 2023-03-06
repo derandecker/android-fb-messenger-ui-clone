@@ -40,7 +40,6 @@ fun DarkModePreview() {
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -94,7 +93,6 @@ fun MainScreen(
         }
     )
 }
-
 
 val bottomNavItems = listOf(
     Screen.Chats,

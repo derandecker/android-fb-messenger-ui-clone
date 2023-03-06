@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.derandecker.fbmessengeruiclone.R
-import com.derandecker.fbmessengeruiclone.chatListItems
+import com.derandecker.fbmessengeruiclone.data.chatListItems
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -44,7 +44,7 @@ fun ChatScreen(navController: NavController) {
     Column(modifier = Modifier.padding(top = 8.dp)) {
         SearchBox(modifier = Modifier.padding(start = 8.dp))
         RecentContactsList(modifier = Modifier.padding(start = 2.dp))
-        ChatList(modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, end = 16.dp))
+        ChatList(modifier = Modifier.padding(start = 16.dp, end = 16.dp))
     }
 }
 
@@ -62,7 +62,7 @@ fun RecentContactsList(modifier: Modifier) {
         modifier = modifier
             .padding(top = 8.dp, bottom = 8.dp)
     ) {
-        items(chatListItems) {
+        items(chatListItems(formatter)) {
             Column(
                 modifier = Modifier.width(58.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -86,7 +86,7 @@ fun RecentContactsList(modifier: Modifier) {
 fun ChatList(modifier: Modifier) {
     LazyColumn(modifier = modifier) {
         // add key when using real data
-        items(items = chatListItems) {
+        items(items = chatListItems(formatter)) {
             ChatItem(it.name, it.message, it.time, it.profilePicture)
         }
     }
