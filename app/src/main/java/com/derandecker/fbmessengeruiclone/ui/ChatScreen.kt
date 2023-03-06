@@ -44,7 +44,7 @@ fun ChatScreen(navController: NavController) {
     Column(modifier = Modifier.padding(top = 8.dp)) {
         SearchBox(modifier = Modifier.padding(start = 8.dp))
         RecentContactsList(modifier = Modifier.padding(start = 2.dp))
-        ChatList(modifier = Modifier.padding(start = 8.dp))
+        ChatList(modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, end = 16.dp))
     }
 }
 
@@ -95,11 +95,11 @@ fun ChatList(modifier: Modifier) {
 @Composable
 fun ChatItem(name: String, message: String, time: LocalDateTime, @DrawableRes profilePicture: Int) {
     Row(
-        modifier = Modifier.padding(bottom = 8.dp),
+        modifier = Modifier.padding(bottom = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         ProfilePic(profilePicture = profilePicture)
-        Column(modifier = Modifier.padding(start = 8.dp)) {
+        Column(modifier = Modifier.padding(start = 16.dp)) {
             Text(text = name)
             Text(
                 text = "$message ${time.format(formatter)}",
