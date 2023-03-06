@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -42,40 +41,41 @@ fun ChatScreenPreview() {
 
 @Composable
 fun ChatScreen(navController: NavController) {
-    Column(Modifier.padding(top = 8.dp, start = 8.dp)) {
-        SearchBox()
-        RecentContactsList()
-        ChatList()
+    Column(modifier = Modifier.padding(top = 8.dp)) {
+        SearchBox(modifier = Modifier.padding(start = 8.dp))
+        RecentContactsList(modifier = Modifier.padding(start = 2.dp))
+        ChatList(modifier = Modifier.padding(start = 8.dp))
     }
 }
 
 @Composable
-fun SearchBox() {
-    Text("Search Box Placeholder")
+fun SearchBox(modifier: Modifier) {
+    Text(
+        modifier = modifier,
+        text = "Search Box Placeholder"
+    )
 }
 
 @Composable
-fun RecentContactsList() {
+fun RecentContactsList(modifier: Modifier) {
     LazyRow(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = 8.dp, bottom = 8.dp)
-            .wrapContentHeight()
     ) {
         items(chatListItems) {
             Column(
                 modifier = Modifier.width(58.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ProfilePic(
-                    modifier = Modifier,
-                    profilePicture = it.profilePicture
-                )
+                ProfilePic(profilePicture = it.profilePicture)
                 Text(
                     modifier = Modifier
                         .padding(top = 4.dp),
                     fontSize = 10.sp,
                     text = it.name,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
@@ -83,8 +83,8 @@ fun RecentContactsList() {
 }
 
 @Composable
-fun ChatList() {
-    LazyColumn {
+fun ChatList(modifier: Modifier) {
+    LazyColumn(modifier = modifier) {
         // add key when using real data
         items(items = chatListItems) {
             ChatItem(it.name, it.message, it.time, it.profilePicture)
@@ -98,7 +98,7 @@ fun ChatItem(name: String, message: String, time: LocalDateTime, @DrawableRes pr
         modifier = Modifier.padding(bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        ProfilePic(modifier = Modifier, profilePicture = profilePicture)
+        ProfilePic(profilePicture = profilePicture)
         Column(modifier = Modifier.padding(start = 8.dp)) {
             Text(text = name)
             Text(
@@ -110,7 +110,7 @@ fun ChatItem(name: String, message: String, time: LocalDateTime, @DrawableRes pr
 }
 
 @Composable
-fun ProfilePic(modifier: Modifier, @DrawableRes profilePicture: Int) {
+fun ProfilePic(@DrawableRes profilePicture: Int) {
     Image(
         modifier = Modifier
             .size(50.dp)
