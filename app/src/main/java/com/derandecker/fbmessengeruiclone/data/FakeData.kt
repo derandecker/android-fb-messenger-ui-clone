@@ -158,5 +158,3 @@ val chatListItems = listOf(
         profilePicture = R.drawable.a25
     )
 )
-
-val recentContactsList = listOf("Jane Doe", "John Doe", "Jim Doe")
