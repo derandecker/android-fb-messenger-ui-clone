@@ -90,21 +90,7 @@ fun RecentContactsList(modifier: Modifier) {
             .padding(top = 8.dp, bottom = 8.dp)
     ) {
         items(chatListItems(formatter)) {
-            Column(
-                modifier = Modifier.width(58.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                ProfilePic(profilePicture = it.profilePicture)
-                Text(
-                    modifier = Modifier
-                        .padding(top = 4.dp),
-                    fontSize = 10.sp,
-                    text = it.name,
-                    textAlign = TextAlign.Center,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+            RecentContactItem(profilePicture = it.profilePicture, name = it.name)
         }
     }
 }
@@ -116,6 +102,25 @@ fun ChatList(modifier: Modifier) {
         items(items = chatListItems(formatter)) {
             ChatItem(it.name, it.message, it.time, it.profilePicture)
         }
+    }
+}
+
+@Composable
+fun RecentContactItem(@DrawableRes profilePicture: Int, name: String) {
+    Column(
+        modifier = Modifier.width(58.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ProfilePic(profilePicture = profilePicture)
+        Text(
+            modifier = Modifier
+                .padding(top = 4.dp),
+            fontSize = 10.sp,
+            text = name,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
@@ -145,8 +150,4 @@ fun ProfilePic(@DrawableRes profilePicture: Int) {
         painter = painterResource(id = profilePicture),
         contentDescription = stringResource(R.string.profile_picture)
     )
-}
-
-@Composable
-fun RecentContactItem() {
 }
