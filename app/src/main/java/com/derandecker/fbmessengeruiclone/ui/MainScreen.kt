@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -24,7 +25,12 @@ import androidx.navigation.compose.rememberNavController
 import com.derandecker.fbmessengeruiclone.models.Screen
 import com.derandecker.fbmessengeruiclone.ui.theme.FBMessengerUICloneTheme
 
-@Preview(showBackground = true)
+//region Previews
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = Devices.PIXEL_4_XL
+)
 @Composable
 fun LightModePreview() {
     FBMessengerUICloneTheme {
@@ -32,7 +38,12 @@ fun LightModePreview() {
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = Devices.PIXEL_4_XL,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
 fun DarkModePreview() {
     FBMessengerUICloneTheme {
@@ -40,10 +51,35 @@ fun DarkModePreview() {
     }
 }
 
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = Devices.TABLET
+)
+@Composable
+fun LightModeTabletPreview() {
+    FBMessengerUICloneTheme {
+        MainScreen()
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = Devices.TABLET,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun DarkModeTabletPreview() {
+    FBMessengerUICloneTheme {
+        MainScreen()
+    }
+}
+// endregion
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(
-) {
+fun MainScreen() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
