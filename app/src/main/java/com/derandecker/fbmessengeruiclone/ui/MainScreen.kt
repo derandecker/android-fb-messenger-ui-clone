@@ -29,7 +29,8 @@ import com.derandecker.fbmessengeruiclone.ui.theme.FBMessengerUICloneTheme
 @Preview(
     showSystemUi = true,
     showBackground = true,
-    device = Devices.PIXEL_4_XL
+    device = Devices.PIXEL_4_XL,
+    group = "Phone"
 )
 @Composable
 fun LightModePreview() {
@@ -42,7 +43,8 @@ fun LightModePreview() {
     showSystemUi = true,
     showBackground = true,
     device = Devices.PIXEL_4_XL,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    group = "Phone"
 )
 @Composable
 fun DarkModePreview() {
@@ -54,7 +56,21 @@ fun DarkModePreview() {
 @Preview(
     showSystemUi = true,
     showBackground = true,
-    device = Devices.TABLET
+    device = Devices.FOLDABLE,
+    group = "Phone"
+)
+@Composable
+fun LightModeFoldablePreview() {
+    FBMessengerUICloneTheme {
+        MainScreen()
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = Devices.TABLET,
+    group = "Tablet"
 )
 @Composable
 fun LightModeTabletPreview() {
@@ -67,7 +83,8 @@ fun LightModeTabletPreview() {
     showSystemUi = true,
     showBackground = true,
     device = Devices.TABLET,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    group = "Tablet"
 )
 @Composable
 fun DarkModeTabletPreview() {
