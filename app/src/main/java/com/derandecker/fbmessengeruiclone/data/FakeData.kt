@@ -12,7 +12,7 @@ fun chatListItems(formatter: DateTimeFormatter): List<ChatItemData> {
     return listOf(
         ChatItemData(
             name = "John Smith",
-            message = "Hey, what's up?",
+            message = "Hey, what's up? Haven't talked in a while!",
             time = LocalDateTime.parse("03-13-2023 07:20 PM", formatter),
             profilePicture = R.drawable.a1
         ),
@@ -31,7 +31,7 @@ fun chatListItems(formatter: DateTimeFormatter): List<ChatItemData> {
         ChatItemData(
             name = "Emily Davis",
             message = "Yeah, I got it. I'll take a look at it later.",
-            time = LocalDateTime.parse("03-02-2023 06:45 PM", formatter),
+            time = LocalDateTime.parse("03-14-2023 06:45 PM", formatter),
             profilePicture = R.drawable.a4
         ),
         ChatItemData(
@@ -43,7 +43,7 @@ fun chatListItems(formatter: DateTimeFormatter): List<ChatItemData> {
         ChatItemData(
             name = "Christopher Wilson",
             message = "Sure, what's up?",
-            time = LocalDateTime.parse("02-28-2023 11:10 AM", formatter),
+            time = LocalDateTime.parse("03-14-2023 02:10 AM", formatter),
             profilePicture = R.drawable.a6
         ),
         ChatItemData(

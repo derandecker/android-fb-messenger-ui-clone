@@ -2,6 +2,7 @@ package com.derandecker.fbmessengeruiclone.ui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -188,6 +189,7 @@ fun ChatItem(
             Text(text = name)
             Row(
                 verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier.weight(2f),
