@@ -10,8 +10,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.derandecker.fbmessengeruiclone.R
 
 sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
-    object Chats : Screen("chats", R.string.chats, icon = Icons.Rounded.Face)
-    object Calls : Screen("calls", R.string.calls, icon = Icons.Rounded.Phone)
-    object People : Screen("people", R.string.people, icon = Icons.Rounded.Person)
-    object Stories : Screen("stories", R.string.stories, icon = Icons.Rounded.Info)
+    object Chats : Screen("Chats", R.string.chats, icon = Icons.Rounded.Face)
+    object Calls : Screen("Calls", R.string.calls, icon = Icons.Rounded.Phone)
+    object People : Screen("People", R.string.people, icon = Icons.Rounded.Person)
+    object Stories : Screen("Stories", R.string.stories, icon = Icons.Rounded.Info)
 }

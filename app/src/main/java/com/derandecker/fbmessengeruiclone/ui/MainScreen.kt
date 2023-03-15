@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -101,38 +103,18 @@ fun MainScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     Scaffold(
-        bottomBar = {
-            androidx.compose.material3.NavigationBar(
-                containerColor = MaterialTheme.colorScheme.background
-            ) {
-                bottomNavItems.forEach { item ->
-                    NavigationBarItem(
-                        selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
-                        onClick = {
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        label = {
-                            Text(
-                                text = stringResource(id = item.resourceId),
-                                fontWeight = FontWeight.SemiBold,
-                            )
-                        },
-                        icon = {
-                            Icon(
-                                imageVector = item.icon,
-                                contentDescription = "${stringResource(id = item.resourceId)} Icon",
-                            )
-                        }
-                    )
-                }
+        topBar = {
+            if (currentDestination != null) {
+                TopAppBar(title = { currentDestination.route?.let { Text(it) } })
             }
-        }, content = { innerPadding ->
+        },
+        bottomBar = {
+            BottomBar(
+                navController = navController,
+                currentDestination = currentDestination
+            )
+        },
+        content = { innerPadding ->
             NavHost(
                 navController,
                 startDestination = Screen.Chats.route,
@@ -153,6 +135,43 @@ val bottomNavItems = listOf(
     Screen.People,
     Screen.Stories,
 )
+
+@Composable
+fun BottomBar(
+    navController: NavController,
+    currentDestination: NavDestination?
+) {
+    androidx.compose.material3.NavigationBar(
+        containerColor = MaterialTheme.colorScheme.background
+    ) {
+        bottomNavItems.forEach { item ->
+            NavigationBarItem(
+                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
+                onClick = {
+                    navController.navigate(item.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                label = {
+                    Text(
+                        text = stringResource(id = item.resourceId),
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = "${stringResource(id = item.resourceId)} Icon",
+                    )
+                }
+            )
+        }
+    }
+}
 
 @Composable
 fun CallsScreen(navController: NavController) {

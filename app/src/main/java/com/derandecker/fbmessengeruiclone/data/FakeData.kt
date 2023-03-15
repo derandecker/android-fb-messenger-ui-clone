@@ -13,7 +13,7 @@ fun chatListItems(formatter: DateTimeFormatter): List<ChatItemData> {
         ChatItemData(
             name = "John Smith",
             message = "Hey, what's up?",
-            time = LocalDateTime.parse("03-05-2023 09:20 AM", formatter),
+            time = LocalDateTime.parse("03-13-2023 07:20 PM", formatter),
             profilePicture = R.drawable.a1
         ),
         ChatItemData(
@@ -35,13 +35,13 @@ fun chatListItems(formatter: DateTimeFormatter): List<ChatItemData> {
             profilePicture = R.drawable.a4
         ),
         ChatItemData(
-            name = "Christopher Wilson",
+            name = "Amanda Garcia",
             message = "Hey, can you give me a call when you have a minute?",
             time = LocalDateTime.parse("03-01-2023 02:25 PM", formatter),
             profilePicture = R.drawable.a5
         ),
         ChatItemData(
-            name = "Amanda Garcia",
+            name = "Christopher Wilson",
             message = "Sure, what's up?",
             time = LocalDateTime.parse("02-28-2023 11:10 AM", formatter),
             profilePicture = R.drawable.a6
