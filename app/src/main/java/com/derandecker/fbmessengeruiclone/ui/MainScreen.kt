@@ -1,10 +1,10 @@
 package com.derandecker.fbmessengeruiclone.ui
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -14,8 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -25,77 +23,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.derandecker.fbmessengeruiclone.models.Screen
-import com.derandecker.fbmessengeruiclone.ui.theme.FBMessengerUICloneTheme
 
-//region Previews
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    device = Devices.PIXEL_4_XL,
-    group = "Phone"
-)
-@Composable
-fun LightModePreview() {
-    FBMessengerUICloneTheme {
-        MainScreen()
-    }
-}
-
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    device = Devices.PIXEL_4_XL,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    group = "Phone"
-)
-@Composable
-fun DarkModePreview() {
-    FBMessengerUICloneTheme {
-        MainScreen()
-    }
-}
-
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    device = Devices.FOLDABLE,
-    group = "Phone"
-)
-@Composable
-fun LightModeFoldablePreview() {
-    FBMessengerUICloneTheme {
-        MainScreen()
-    }
-}
-
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    device = Devices.TABLET,
-    group = "Tablet"
-)
-@Composable
-fun LightModeTabletPreview() {
-    FBMessengerUICloneTheme {
-        MainScreen()
-    }
-}
-
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    device = Devices.TABLET,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    group = "Tablet"
-)
-@Composable
-fun DarkModeTabletPreview() {
-    FBMessengerUICloneTheme {
-        MainScreen()
-    }
-}
-// endregion
-
+@CombinedPreviews
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen() {
@@ -141,7 +70,7 @@ fun BottomBar(
     navController: NavController,
     currentDestination: NavDestination?
 ) {
-    androidx.compose.material3.NavigationBar(
+    NavigationBar(
         containerColor = MaterialTheme.colorScheme.background
     ) {
         bottomNavItems.forEach { item ->

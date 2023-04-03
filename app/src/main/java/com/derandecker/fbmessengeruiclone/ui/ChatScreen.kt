@@ -35,8 +35,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -49,38 +47,11 @@ import java.time.format.DateTimeFormatter
 
 val defaultTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm a")
 
-//region Previews
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFFFFFF,
-    device = Devices.PIXEL_4_XL
-)
-@Composable
-fun ChatScreenPreview() {
-    ChatScreen(navController = rememberNavController())
-}
-
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFFFFFF,
-    device = Devices.FOLDABLE
-)
-@Composable
-fun ChatScreenFoldablePreview() {
-    ChatScreen(navController = rememberNavController())
-}
-
-
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFFFFFF,
-    device = Devices.TABLET
-)
+@CombinedPreviews
 @Composable
 fun ChatScreenTabletPreview() {
     ChatScreen(navController = rememberNavController())
 }
-//endregion
 
 @Composable
 fun ChatScreen(navController: NavController) {
